@@ -1,0 +1,77 @@
+.form-page{
+    padding: 120px 6% 90px;
+    font-family: "Poppins", sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn-retour{
+    color: var(--anthracite);
+    font-size: 18px;
+}
+
+.form-card{
+    margin-top: 15px;
+    background-color: var(--blanc);
+    border: 1px solid var(--bordure);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+.form-card h1{
+    font-size: 26px;
+    color: var(--anthracite);
+    margin-bottom: 28px;
+}
+
+.form-card label{
+    display: block;
+    font-size: 14px;
+    color: var(--anthracite);
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--bordure);
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: var(--anthracite);
+    background-color: var(--creme);
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus{
+    outline: none;
+    border-color: var(--vert);
+}
+
+.form-card textarea{
+    resize: vertical;
+}
+
+.form-card button{
+    display: inline-block;
+    background-color: var(--vert);
+    color: var(--blanc);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    margin-top: 28px;
+    transition: 0.3s ease;
+}
+
+.form-card button:hover{
+    transform: translateY(-3px);
+}

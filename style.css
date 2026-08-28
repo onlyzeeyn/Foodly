@@ -30,9 +30,9 @@ body{
 
 nav{
     width: 100%;
-    padding: 20px 5%;
+    padding: 20px 12%;
     background-color: var(--vert);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);  
+    box-shadow: 0 25px 50px -25px rgba(74, 124, 89, 0.3); 
     display:flex;
     justify-content: space-between;
     align-items:center;
@@ -67,6 +67,7 @@ nav{
     color: var(--creme);
     font-size: 18px;
     font-weight: 400;
+    text-transform: capitalize;
     transition: 0.3s ease;
 }
 
@@ -93,9 +94,168 @@ nav{
     border-radius: 3px;
 }
 
+section{
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Hero section */
+
+.hero{
+    padding: 150px 10%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-family: "Poppins", sans-serif;
+    gap: 100px;
+}
+
+/* text-content styling */
+
+.text-content{
+    width: 35%;
+}
+
+.eyebrow{
+    color: var(--vert);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.hero h1{
+    font-size: 42px;
+    color: var(--anthracite);
+    margin-bottom: 15px;
+}
+
+.hero h1 em{
+    color: var(--vert);
+}
+
+.hero p{
+    font-size: 18px;
+    color: #565650;
+    margin-bottom: 25px;
+}
+.cta-group a{
+    display: inline-block;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.cta-group .btn-primary{
+    background-color: var(--vert);
+    box-shadow: 0 0 5px var(--vert);
+    color: var(--blanc);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+
+.cta-group .btn-primary:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px var(--vert);
+}
+
+.cta-group .btn-secondary{
+    background-color: var(--blanc);
+    border: 2px solid var(--bordure);
+    color: var(--anthracite);
+    transition: 0.3s ease;
+}
+.cta-group .btn-secondary:hover{
+    color: var(--vert);
+    border: 2px solid var(--vert);
+}
+
+/* preview-card styling */
+
+.preview-card{
+    max-width: 450px;
+    width: 100%;
+    background-color: var(--blanc);
+    border: 2px solid var(--bordure);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 25px 50px -25px rgba(74, 124, 89, 0.3);
+}
+
+.card-label{
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--vert);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.stat-row{
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    background-color: var(--creme);
+}
+
+.stat-icon{
+    height: 44px;
+    width: 44px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: var(--vert-pale);
+    border-radius: 10px;
+}
+
+.stat-info{
+    display: flex;
+    flex-direction:column;
+}
+
+.stat-number{
+    font-family: "Fraunces", serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--anthracite);
+}
+
+.stat-label,.stat-sub{
+    font-size: 13px;
+    color: #565650;
+}
+
 /* Responsive */
 
+@media (max-width:1250px){
+    .hero h1{
+        font-size: 38px;
+    }
+
+    .preview-card{
+        max-width: 350px;
+    }
+
+    .cta-group a{
+        padding: 13px 20px;
+        font-size: 15px;
+    }
+}
+
 @media (max-width:850px){
+
+    nav{
+        padding: 15px 10%;
+    }
+
     .nav-links{
         display: none;
     }
@@ -103,20 +263,64 @@ nav{
     .hamburger{
         display: flex;
     }
-}
 
+    .hero{
+        padding: 100px 10%;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .text-content{
+        width: 100%;
+        text-align: center;
+    }
+}
 
 @media (max-width:500px){
 
-    nav{
-        padding: 15px 10%;
-    }
     .logo{
         font-size: 20px;
     }
 
     .hamburger{
         width: 28px;
+    }
+
+    .eyebrow{
+        margin-bottom: 10px;
+    }
+    
+    .hero p{
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+
+    .cta-group a{
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+
+    .preview-card{
+        padding: 20px;
+    }
+
+    .card-label{
+        font-size: 12px;
+    }
+
+    .stat-icon{
+        height: 36px;
+        width: 36px;
+        font-size: 16px;
+    }
+
+    .stat-number{
+        font-size: 14px;
+    }
+
+    .stat-label,.stat-sub{
+        font-size: 10px;
+        color: #565650;
     }
 
 }

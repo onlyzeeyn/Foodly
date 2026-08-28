@@ -1,10 +1,9 @@
-
----------- Base de données Foodly ----------
+-- Base de données Foodly 
 
 CREATE DATABASE IF NOT EXISTS foodly;
 USE foodly;
 
----------- Table : recettes ----------
+-- Table : recettes
 
 CREATE TABLE recettes (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,7 +14,7 @@ CREATE TABLE recettes (
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
----------- Table : planning ----------
+-- Table : planning 
 
 CREATE TABLE planning (
     id INT AUTO_INCREMENT PRIMARY KEY,

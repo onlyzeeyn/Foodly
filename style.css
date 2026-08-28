@@ -56,6 +56,10 @@ nav{
     transform: scale(1.05);
 }
 
+.close-menu{
+    display: none;
+}
+
 .nav-links{
     display: flex;
     gap: 20px;
@@ -294,10 +298,10 @@ nav{
     margin-bottom: 10px;
   }
 
-  .feature-card p{
+.feature-card p{
     font-size: 12px;
     color: #6b6b64;
-  }
+}
 
 /* footer styling */
 
@@ -316,17 +320,17 @@ footer p{
 /* scroll button styling */
 
 #scrollTopBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--vert);
-  color: var(--blanc);
-  width: 50px;
-  height: 50px;
-  font-size: 18px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--vert);
+    color: var(--blanc);
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .hide{
@@ -372,6 +376,44 @@ footer p{
 
     .hamburger{
         display: flex;
+    }
+
+    .nav-links.active{
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 60%;
+        background-color: rgba(74, 124, 89, 0.9);
+        backdrop-filter: blur(15px);
+        gap: 15px;
+    }
+
+    .close-menu{
+        display: inline-block;
+        background-color: transparent;
+        border: none;
+        padding: 20px 15%;
+        color: var(--blanc);
+        font-size: 20px;
+        cursor: pointer;
+        text-align: right;
+    }
+
+    .close-menu.hide{
+        display: none;
+    }
+
+    .nav-links li a{
+        width: 100%;
+        padding: 20px 10%;
+    }
+
+    .close-menu:hover,.nav-links li:hover{
+        background-color: #285536;
     }
 
     .hero{

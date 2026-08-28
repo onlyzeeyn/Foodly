@@ -1,5 +1,5 @@
 // Scroll to button 
-let scrollBtn = document.getElementById("scrollTopBtn");
+const scrollBtn = document.getElementById("scrollTopBtn");
 
 window.addEventListener("scroll", () => {
     if ( window.scrollY >= 250 ){
@@ -16,4 +16,19 @@ scrollBtn.addEventListener("click", () => {
     })
 })
 
+// Menu hamburger
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+const closeMenu = document.querySelector(".close-menu");
 
+
+function toggleMenu(){
+    navLinks.classList.toggle("active");
+    closeMenu.classList.toggle('hide')
+
+    const isOpen = navLinks.classList.contains("active");
+    hamburger.setAttribute("aria-expanded", isOpen);
+}
+
+hamburger.addEventListener("click",toggleMenu);
+closeMenu.addEventListener("click",toggleMenu);

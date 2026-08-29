@@ -31,7 +31,7 @@ require_once 'includes/header.php';
 
             <div class="detail-actions">
                 <a href="modifier_recette.php?id=<?php echo $recette['id']; ?>" class="btn btn-primary">Modifier</a>
-                <a href="#" class="btn-danger">Supprimer</a>
+                <a href="supprimer_recette.php?id=<?php echo $recette['id']; ?>" class="btn-danger" onclick="return confirm('Supprimer cette recette ?');">Supprimer</a>
             </div>
 
         </div>

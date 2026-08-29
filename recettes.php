@@ -1,6 +1,10 @@
 <?php
 $page_css = "style-recettes.css";
+require_once 'includes/db.php';
 require_once 'includes/header.php';
+
+$stmt = $pdo->query("SELECT * FROM recettes ORDER BY id DESC");
+$recettes = $stmt->fetchAll();
 ?>
 
     <section class="recettes-page">
@@ -12,26 +16,24 @@ require_once 'includes/header.php';
 
         <div class="recettes-grid">
 
-            <a href="recette_detail.php?id=1" class="recette-card">
-                <div class="recette-icon">🍛</div>
-                <h3>Poulet au curry</h3>
-                <p class="recette-meta">Dîner · 30 min</p>
-                <p class="recette-ingredients">📝 6 ingrédients</p>
-            </a>
+            <?php if (count($recettes) === 0) { ?>
 
-            <a href="recette_detail.php?id=2" class="recette-card">
-                <div class="recette-icon">🥗</div>
-                <h3>Salade César</h3>
-                <p class="recette-meta">Déjeuner · 15 min</p>
-                <p class="recette-ingredients">📝 4 ingrédients</p>
-            </a>
+                <p>Aucune recette pour le moment. Ajoutez-en une !</p>
 
-            <a href="recette_detail.php?id=3" class="recette-card">
-                <div class="recette-icon">🥞</div>
-                <h3>Pancakes</h3>
-                <p class="recette-meta">Petit-déj · 20 min</p>
-                <p class="recette-ingredients">📝 5 ingrédients</p>
-            </a>
+            <?php } else { ?>
+
+                <?php foreach ($recettes as $recette) { ?>
+
+                    <a href="recette_detail.php?id=<?php echo $recette['id']; ?>" class="recette-card">
+                        <div class="recette-icon">🍽️</div>
+                        <h3><?php echo htmlspecialchars($recette['nom']); ?></h3>
+                        <p class="recette-meta"><?php echo htmlspecialchars($recette['categorie']); ?> · <?php echo $recette['temps_preparation']; ?> min</p>
+                        <p class="recette-ingredients">📝 <?php echo substr_count($recette['ingredients'], ',') + 1; ?> ingrédients</p>
+                    </a>
+
+                <?php } ?>
+
+            <?php } ?>
 
         </div>
 

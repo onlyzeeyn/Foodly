@@ -1,4 +1,21 @@
 <?php
+require_once 'includes/db.php';
+
+// Si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $nom = $_POST['nom'];
+    $categorie = $_POST['categorie'];
+    $temps = $_POST['temps'];
+    $ingredients = $_POST['ingredients'];
+
+    $stmt = $pdo->prepare("INSERT INTO recettes (nom, ingredients, temps_preparation, categorie) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$nom, $ingredients, $temps, $categorie]);
+
+    header("Location: recettes.php");
+    exit;
+}
+
 $page_css = "style-ajouter-recette.css";
 require_once 'includes/header.php';
 ?>
@@ -11,7 +28,7 @@ require_once 'includes/header.php';
 
             <h1>Ajouter une recette</h1>
 
-            <form action="#" method="POST">
+            <form action="ajouter_recette.php" method="POST">
 
                 <label for="nom">Nom de la recette</label>
                 <input type="text" id="nom" name="nom" placeholder="Ex: Poulet au curry" required>

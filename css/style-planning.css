@@ -1,0 +1,81 @@
+.planning-page{
+    padding: 120px 6% 90px;
+    font-family: "Poppins", sans-serif;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.planning-header{
+    margin-bottom: 30px;
+}
+
+.planning-header h1{
+    font-family: "Fraunces", serif;
+    font-size: 32px;
+    color: var(--anthracite);
+}
+
+.planning-list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.jour-card{
+    background-color: var(--blanc);
+    border: 1px solid var(--bordure);
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+.jour-card h2{
+    font-family: "Fraunces", serif;
+    font-size: 18px;
+    color: var(--anthracite);
+    margin-bottom: 14px;
+}
+
+.creneau{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--creme);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+}
+
+.creneau:last-child{
+    margin-bottom: 0;
+}
+
+.creneau-label{
+    font-size: 13px;
+    color: #6b6b64;
+    font-weight: 600;
+    min-width: 50px;
+}
+
+.creneau-recette{
+    font-size: 14px;
+    color: var(--anthracite);
+    font-weight: 500;
+}
+
+.creneau-select{
+    flex: 1;
+    margin-left: 14px;
+    padding: 8px 10px;
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    color: var(--anthracite);
+    background-color: var(--blanc);
+}
+
+.creneau-select:focus{
+    outline: none;
+    border-color: var(--vert);
+}

@@ -1,0 +1,50 @@
+.courses-page{
+    padding: 120px 6% 90px;
+    font-family: "Poppins", sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.courses-header{
+    margin-bottom: 30px;
+}
+
+.courses-header h1{
+    font-family: "Fraunces", serif;
+    font-size: 32px;
+    color: var(--anthracite);
+}
+
+.courses-card{
+    background-color: var(--blanc);
+    border: 1px solid var(--bordure);
+    border-radius: 16px;
+    padding: 24px 32px;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+.courses-list{
+    list-style: none;
+}
+
+.courses-list li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: var(--anthracite);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--bordure);
+}
+
+.courses-list li:last-child{
+    border-bottom: none;
+}
+
+.ingredient-count{
+    font-size: 12px;
+    color: var(--vert);
+    background-color: var(--vert-pale);
+    padding: 4px 10px;
+    border-radius: 20px;
+}

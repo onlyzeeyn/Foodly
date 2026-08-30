@@ -63,9 +63,14 @@
     font-weight: 500;
 }
 
-.creneau-select{
+.creneau-form{
     flex: 1;
     margin-left: 14px;
+}
+
+.creneau-select{
+    width: 100%;
+    margin-left: 0;
     padding: 8px 10px;
     border: 1px solid var(--bordure);
     border-radius: 8px;

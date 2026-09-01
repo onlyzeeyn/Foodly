@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/db.php';
 
+$joursValides = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+$typesValides = ["Midi", "Soir"];
+
 // Si un select a été changé
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -8,25 +11,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $type_repas = $_POST['type_repas'];
     $id_recette = $_POST['id_recette'];
 
-    if ($id_recette === '') {
-        // L'utilisateur a choisi "+ choisir une recette" : on retire le créneau
-        $stmt = $pdo->prepare("DELETE FROM planning WHERE jour = ? AND type_repas = ?");
-        $stmt->execute([$jour, $type_repas]);
+    // Validation : jour et type_repas doivent être des valeurs attendues
+    if (in_array($jour, $joursValides) && in_array($type_repas, $typesValides)) {
 
-    } else {
-        // On vérifie si un créneau existe déjà pour ce jour + ce type de repas
-        $stmt = $pdo->prepare("SELECT id FROM planning WHERE jour = ? AND type_repas = ?");
-        $stmt->execute([$jour, $type_repas]);
-        $existant = $stmt->fetch();
+        if ($id_recette === '') {
+            // L'utilisateur a choisi "+ choisir une recette" : on retire le créneau
+            $stmt = $pdo->prepare("DELETE FROM planning WHERE jour = ? AND type_repas = ?");
+            $stmt->execute([$jour, $type_repas]);
 
-        if ($existant) {
-            // Le créneau existe déjà, on le met à jour
-            $stmt = $pdo->prepare("UPDATE planning SET id_recette = ? WHERE id = ?");
-            $stmt->execute([$id_recette, $existant['id']]);
         } else {
-            // Le créneau n'existe pas encore, on le crée
-            $stmt = $pdo->prepare("INSERT INTO planning (jour, type_repas, id_recette) VALUES (?, ?, ?)");
-            $stmt->execute([$jour, $type_repas, $id_recette]);
+            // On vérifie que cette recette existe vraiment avant de l'assigner
+            $stmt = $pdo->prepare("SELECT id FROM recettes WHERE id = ?");
+            $stmt->execute([$id_recette]);
+            $recetteExiste = $stmt->fetch();
+
+            if ($recetteExiste) {
+                $stmt = $pdo->prepare("SELECT id FROM planning WHERE jour = ? AND type_repas = ?");
+                $stmt->execute([$jour, $type_repas]);
+                $existant = $stmt->fetch();
+
+                if ($existant) {
+                    $stmt = $pdo->prepare("UPDATE planning SET id_recette = ? WHERE id = ?");
+                    $stmt->execute([$id_recette, $existant['id']]);
+                } else {
+                    $stmt = $pdo->prepare("INSERT INTO planning (jour, type_repas, id_recette) VALUES (?, ?, ?)");
+                    $stmt->execute([$jour, $type_repas, $id_recette]);
+                }
+            }
         }
     }
 
@@ -47,7 +58,7 @@ foreach ($planningBrut as $ligne) {
     $planning[$ligne['jour']][$ligne['type_repas']] = $ligne['id_recette'];
 }
 
-$jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+$jours = $joursValides;
 
 $page_css = "style-planning.css";
 require_once 'includes/header.php';
@@ -66,7 +77,7 @@ require_once 'includes/header.php';
                 <div class="jour-card">
                     <h2><?php echo $jour; ?></h2>
 
-                    <?php foreach (["Midi", "Soir"] as $type_repas) { ?>
+                    <?php foreach ($typesValides as $type_repas) { ?>
 
                         <div class="creneau">
                             <span class="creneau-label"><?php echo $type_repas; ?></span>

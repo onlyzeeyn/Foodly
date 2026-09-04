@@ -11,7 +11,10 @@ $recettes = $stmt->fetchAll();
 
         <div class="recettes-header">
             <h1>Mes recettes</h1>
-            <a href="ajouter_recette.php" class="btn btn-primary">+ Ajouter une recette</a>
+            <div class="recettes-header-actions">
+                <a href="decouvrir_recette.php" class="btn btn-secondary">🌍 Découvrir</a>
+                <a href="ajouter_recette.php" class="btn btn-primary">+ Ajouter une recette</a>
+            </div>
         </div>
 
         <div class="recettes-grid">

@@ -87,3 +87,22 @@
 .form-card button:hover{
     transform: translateY(-3px);
 }
+
+.decouvrir-sous-titre{
+    font-size: 14px;
+    color: #6b6b64;
+    margin-bottom: 20px;
+}
+
+.decouvrir-image{
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.decouvrir-autre{
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
